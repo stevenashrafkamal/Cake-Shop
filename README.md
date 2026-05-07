@@ -50,7 +50,6 @@ Run the project:
 
 Method 1 (Simplest): Just double-click the index.html file in your file explorer to open it in your browser.
 
-
 Method 2 (Recommended): Open the folder in VS Code, right-click on index.html, and select "Open with Live Server".
 
 ## 📁 Project Structure
