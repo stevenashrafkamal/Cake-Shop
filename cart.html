@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Shopping Cart</title>
+</head>
+
+<body>
+    <style>
+    /* إعدادات عامة */
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background-color: #fff1f5;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+        margin: 0;
+    }
+
+    h1 { color: #e91e63; margin-bottom: 30px; }
+
+    /* حاوية السلة */
+    #cart-items {
+        width: 100%;
+        max-width: 500px;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .cart-item:last-child { border-bottom: none; }
+
+    #total {
+        color: #ad1457;
+        margin-top: 20px;
+        font-size: 24px;
+    }
+
+    /* نموذج البيانات */
+    h3 { margin-top: 40px; color: #e91e63; }
+
+    input {
+        width: 100%;
+        max-width: 300px;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ffc1d3;
+        border-radius: 25px; /* زوايا دائرية */
+        outline: none;
+        transition: 0.3s;
+    }
+
+    input:focus { border-color: #e91e63; box-shadow: 0 0 5px rgba(233,30,99,0.2); }
+
+    /* الزراير */
+    button {
+        background-color: #e91e63;
+        color: white;
+        border: none;
+        padding: 12px 35px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 20px;
+        transition: 0.3s;
+    }
+
+    button:hover { background-color: #c2185b; transform: scale(1.05); }
+
+    a {
+        text-decoration: none;
+        color: #e91e63;
+        font-weight: bold;
+        display: block;
+        margin-top: 20px;
+    }
+
+    a:hover { text-decoration: underline; }
+</style>
+    <h1>🛒 Cart</h1>
+    <div id="cart-items"></div>
+    <h2 id="total"></h2>
+    
+    <hr>
+    <h3>Delivery Information</h3>
+    <input type="text" id="name" placeholder="Name" ><br><br>
+    <input type="text" id="address" placeholder="Address" ><br><br>
+    <button onclick="checkout()">Confirm Order</button>
+    <br><br><a href="index.html">Back to Shopping</a>
+
+    <script>
+        var cart = JSON.parse(localStorage.getItem('cart')) || [];
+        var container = document.getElementById('cart-items');
+        var total = 0;
+
+        if(cart.length === 0) {
+            container.innerHTML = "Cart is empty!";
+        } else {
+            cart.forEach(function(item) {
+                total += item.price;
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.name}</span>
+                        <span>${item.price} $</span>
+                    </div>
+                `;
+            });
+            document.getElementById('total').innerText = "Total: " + total + " $";
+        }
+
+        function checkout() {
+            var name = document.getElementById('name').value;
+            if(name === "") { alert("Please enter your name"); return; }
+            
+            alert("Thank you " + name + "! Your order has been received ✅");
+            localStorage.removeItem('cart'); 
+            location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
+
+

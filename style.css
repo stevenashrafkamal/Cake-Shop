@@ -1,0 +1,233 @@
+/* body {
+    font-family: sans-serif;
+    background: #fff5f8;
+    color: #333;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    background: #ff85a1;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    width: 200px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+button {
+    background: #ff85a1;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #e6738f;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+} */
+
+/* إعدادات عامة */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff1f5;
+    /* لون خلفية فاتح جداً متناسق مع التصميم */
+    color: #333;
+}
+
+/* إعدادات الهيدر الأساسية */
+header {
+    background-color: #e91e63;
+    /* نفس لون فيجما */
+    color: white;
+    padding: 20px 0 0 0;
+    /* مسافة من فوق */
+    width: 100%;
+    min-height: 80vh;
+    /* يخلي الهيدر واخد أغلب مساحة الشاشة */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* شريط التنقل العلوي */
+.navbar {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* الزرار الأصفر اللي في فيجما */
+.select-cake-btn {
+    background-color: #ffeb3b;
+    color: #333 !important;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* القسم الكبير (العنوان والصورة) */
+.hero-section {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-text h1 {
+    font-size: 60px;
+    /* خط كبير جداً */
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* تعديل بسيط للكروت عشان تبدأ بعد الهيدر مباشرة */
+.container {
+    padding-top: 80px;
+}
+
+/* الحاوية الكبيرة للكروت */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* شكل الكارت المستوحى من فيجما */
+.card {
+    background: white;
+    border-radius: 20px;
+    /* زوايا دائرية زي الصورة */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    border: 1px solid #fce4ec;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    /* حركة خفيفة عند الوقوف على الكارت */
+}
+
+/* صور المنتجات */
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #ad1457;
+    /* لون نص غامق متناسق مع الفوشيا */
+}
+
+.card p {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+}
+
+/* الزراير - مستوحاة من زرار select cake */
+button {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #c2185b;
+}
+
+/* تعديل بسيط للـ Cart link */
+header a {
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+header a:hover {
+    background: white;
+    color: #e91e63 !important;
+}

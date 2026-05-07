@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Product Details </title>
+</head>
+<body>
+    <div id="details" class="card" style="width: 400px; margin: auto;"></div>
+
+    <script>
+        class ProductService {
+            #baseUrl = "https://dummyjson.com/products/";
+            #container = document.getElementById('details');
+
+            constructor(productId) {
+                this.productId = productId;
+            }
+
+            async fetchProduct() {
+                try {
+                    const response = await fetch(`${this.#baseUrl}${this.productId}`);
+                    const data = await response.json();
+                    this.#render(data);
+                } catch (error) {
+                    console.error("Error fetching product:", error);
+                    this.#container.innerHTML = "<p>Failed to load product details.</p>";
+                }
+            }
+
+            #render(p) {
+                this.#container.innerHTML = `
+                    <img src="${p.thumbnail}" alt="${p.title}">
+                    <h2>${p.title}</h2>
+                    <p>${p.description}</p>
+                    <p>Price: ${p.price} $</p>
+                    <button id="addBtn">Add to Cart</button>
+                    <br><br><a href="index.html">Back</a>
+                `;
+
+                document.getElementById('addBtn').onclick = () => this.#addToCart(p.title, p.price);
+            }
+
+            #addToCart(name, price) {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push({ name, price, date: new Date().toISOString() });
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`${name} added to cart!`);
+            }
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get('id');
+
+        if (productId) {
+            const productApp = new ProductService(productId);
+            productApp.fetchProduct();
+        } else {
+            document.getElementById('details').innerHTML = "<p>No product selected.</p>";
+        }
+    </script>
+</body>
+</html>

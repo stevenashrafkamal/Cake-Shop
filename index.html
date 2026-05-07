@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Cake Store</title>
+</head>
+<body>
+   <header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="Logo 2.png" width="100" alt="HMC Logo"> </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Cakes</a></li>
+            <li><a href="#">About me</a></li>
+            <li><a href="#">Contact me</a></li>
+        </ul>
+        <a href="cart.html" class="select-cake-btn">Selected Cakes 🛒</a>
+    </nav>
+
+    <div class="hero-section">
+        <div class="hero-text">
+            <h1>Delicious <br> Home Made Cake</h1>
+        </div>
+        <div class="hero-image">
+            <img src="cakes 4to.png" width="400" alt="Cake Hero Image">
+        </div>
+    </div>
+</header>
+
+    <div id="cake-list" class="container">Loading delicious cakes...</div>
+
+    <script>
+        class CakeStore {
+            #apiUrl = "https://dummyjson.com/products/category/groceries";
+            #container = document.getElementById('cake-list');
+
+            constructor() {
+                this.init();
+            }
+
+            async init() {
+                try {
+                    const products = await this.#fetchCakes();
+                    this.#render(products);
+                } catch (error) {
+                    this.#container.innerHTML = "Something went wrong while loading cakes.";
+                    console.error(error);
+                }
+            }
+
+            async #fetchCakes() {
+                const response = await fetch(this.#apiUrl);
+                if (!response.ok) throw new Error("Failed to fetch data");
+                const data = await response.json();
+                return data.products;
+            }
+
+            #render(products) {
+                this.#container.innerHTML = ""; 
+                
+                products.forEach(product => {
+                    const card = this.#createCard(product);
+                    this.#container.innerHTML += card;
+                });
+            }
+
+            #createCard(product) {
+                return `
+                    <div class="card">
+                        <img src="${product.thumbnail}" alt="${product.title}">
+                        <h3>${product.title}</h3>
+                        <p>${product.price} $</p>
+                        <button onclick="location.href='details.html?id=${product.id}'">Details</button>
+                    </div>
+                `;
+            }
+        }
+
+        const myCakeStore = new CakeStore();
+    </script>
+</body>
+</html>
