@@ -9,7 +9,7 @@ Welcome to the frontend of the **Delicious Cake Shop**! This project is a respon
 
 ### 🌐 Live Demo
 You can view the fully functioning live version of the shop here:  
-**[👉 Click here to visit Delicious Cake Shop on GitHub Pages](https://YourUsername.github.io/delicious-cake-shop/)**
+**[👉 Click here to visit Delicious Cake Shop on GitHub Pages](https://stevenashrafkamal.github.io/Cake-Shop/)**
 
 ---
 
