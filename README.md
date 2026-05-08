@@ -39,7 +39,7 @@ If you want to clone this repository and run it on your local machine, follow th
 1. **Clone the repository:**
    Open your terminal and run the following command:
    ```bash
-   git clone [https://github.com/YourUsername/delicious-cake-shop.git](https://github.com/YourUsername/delicious-cake-shop.git)
+   git clone [https://github.com/stevenashrafkamal/delicious-cake-shop.git](https://github.com/stevenashrafkamal/delicious-cake-shop.git)
    ```
    Navigate to the project directory:
 
